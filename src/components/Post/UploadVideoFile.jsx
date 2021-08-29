@@ -1,9 +1,9 @@
 import { Button, CircularProgress, makeStyles } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import VideocamRoundedIcon from '@material-ui/icons/VideocamRounded';
 import Alert from '@material-ui/lab/Alert';
 import { v4 as uuidv4 } from 'uuid'
-import { database, storage } from '../../firebase';
+import auth, { database, storage } from '../../firebase';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +28,7 @@ function UploadVideoFile(props) {
     // console.log(props.userData.map((user)=>(
     //     console.log(user.Uid)
     // )));
+    console.log(props);
    
 
   
@@ -35,29 +36,54 @@ function UploadVideoFile(props) {
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [CurrentUserObj,setCurrentUserObj]=useState("");
     const type = ['video/mp4', 'video/webm', 'video/ogg']
      //uid
-    let UserUid=props.userData.map((user)=>(
-        user.Uid
-    ))
-    let finalUserUid=UserUid[0];
-    console.log(finalUserUid);
+//     let UserUid=props.userData.map((user)=>(
+//         user.Uid
+//     ))
+//     let finalUserUid=UserUid[0];
+//     console.log(finalUserUid);
 
-    //username
-    let userUsername=props.userData.map((user)=>{
-      return  user.Full_Name
-    })
-    // console.log(userUsername);
-    let finalUserUserName=userUsername[0];
-    console.log(finalUserUserName);
+//     //username
+//     let userUsername=props.userData.map((user)=>{
+//       return  user.Full_Name
+//     })
+//     // console.log(userUsername);
+//     let finalUserUserName=userUsername[0];
+//     console.log(finalUserUserName);
       
-//profileurl
-    let UserProfileUrl=props.userData.map((user)=>{
-        return user.ProfileUrl
-    })
-    let FinalUserProfileUrl=UserProfileUrl[0];
-    // console.log(FinalUserProfileUrl);
+// //profileurl
+//     let UserProfileUrl=props.userData.map((user)=>{
+//         return user.ProfileUrl
+//     })
+//     let FinalUserProfileUrl=UserProfileUrl[0];
+//     // console.log(FinalUserProfileUrl);
+useEffect(()=>{
+    auth.onAuthStateChanged(async (user)=>{
+        console.log("hello");
+         if (user){
+         
+        await database.users.doc(user.uid).get().then((doc)=>{
+             // console.log(doc.data());
+           let  AuthCurrentUserObject =doc.data();
+          console.log(AuthCurrentUserObject);
+      
+          setCurrentUserObj(AuthCurrentUserObject);
+    
+           
+         })
+            
+         }
+         else{
+             console.log("none");
+         }
+     })
 
+
+},[])
+
+ console.log(CurrentUserObj);
 
     const handleVideoFile=(e)=>{
        const file=e?.target?.files[0];
@@ -90,7 +116,7 @@ function UploadVideoFile(props) {
         const id=uuidv4();
         let userUid= props.userData;
         console.log(userUid);
-        const uploadVideoTask=storage.ref(`/posts/${finalUserUid}/videos/${file.name}`).put(file);
+        const uploadVideoTask=storage.ref(`/posts/${CurrentUserObj.Uid}/videos/${file.name}`).put(file);
         uploadVideoTask.on("state_changed",fn1,fn2,fn3);
         function fn1(snapshot) {
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -109,9 +135,9 @@ function UploadVideoFile(props) {
                 PostId: id,
                 PostUrl: videoURL,
                 Type: "video",
-                UserId: finalUserUid,
-                UserName:finalUserUserName,
-                UserProfile: FinalUserProfileUrl,
+                UserId: `${CurrentUserObj.Uid}`,
+                UserName:`${CurrentUserObj.Full_Name}`,
+                UserProfile: `${CurrentUserObj.ProfileUrl}`,
                 Comment: [],
                 Likes: [],
                 CreatedAt: database.getCurrentTimeStamp()

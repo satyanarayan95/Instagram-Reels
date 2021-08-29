@@ -151,7 +151,7 @@ useEffect(()=>{
                                             onClose={handleCloseBox}
                                         >
                                             <MenuItem onClick={signOut}>Logout</MenuItem>
-                                            <MenuItem onClick={handleDeleteAcnt}>Delete Account</MenuItem>
+                                            {/* <MenuItem onClick={handleDeleteAcnt}>Delete Account</MenuItem> */}
                                         </Menu>
                                     </div>
 
@@ -218,7 +218,7 @@ useEffect(()=>{
                                                   alt="profile pic"
                                                  />
                                             </div>
-                                            <h4 className='leftFeedUserName' onClick={() => { setProfile(true) }}>{CurrentUserObj.Full_Name}</h4>
+                                            <h3 className='leftFeedUserName' onClick={() => { setProfile(true) }}>{CurrentUserObj.Full_Name}</h3>
                                         </>
                                     }
                                     <div className="uploadBtns">

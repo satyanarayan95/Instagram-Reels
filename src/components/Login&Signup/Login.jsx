@@ -69,7 +69,7 @@ function Login() {
     setLoading(true);
     auth.signInWithEmailAndPassword(email,password).then((authUser)=>{
           localStorage.setItem("isSignin",true);
-          history.push("/")
+        //   history.push("/")
           console.log(authUser);
       
     })
@@ -165,7 +165,6 @@ function Login() {
                                     disabled={loading}
                                     type='submit'
                                    >
-                                
                                     Login
                                 </Button>
                             </div>

@@ -88,7 +88,7 @@ function Signup() {
          async  function fn3(){
                 let downloadUrl=await uploadTaskListener.snapshot.ref.getDownloadURL();
 
-                await database.users.doc(uid).set({
+           await database.users.doc(uid).set({
                     Username:userName,
                     Full_Name:fullName,
                     Uid:uid,
@@ -98,6 +98,7 @@ function Signup() {
                     Bio:"Add Bio",
                     Created_At:database.getCurrentTimeStamp()
                 })
+            //   console.log(response);
                 setLoading(false);
                 history.push("/login")
            }

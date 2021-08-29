@@ -10,12 +10,13 @@ function PrivateRoute(props) {
 return authenticatedtoken? <Route {...props} ></Route> : <Redirect to="/login"></Redirect>
 }
 
+
 function App() {
   return (
     <Router>
       <Switch>
-       <Route path="/login" component={Login} />
-       <Route path="/signup" component={Signup} />
+       <Route exact path="/login" component={Login} />
+       <Route exact path="/signup" component={Signup} />
        <PrivateRoute exact path="/" component={Feed} />
     
       </Switch>
