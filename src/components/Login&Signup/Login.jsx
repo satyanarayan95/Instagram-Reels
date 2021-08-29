@@ -63,14 +63,9 @@ function Login() {
 
  const handleLogin= (e)=>{
     e.preventDefault();
-    //  setLoading(true);
+ 
      try{
-    //    auth.signInWithEmailAndPassword(email,password).then((authUser)=>{
-    //        console.log(authUser)
-    //        localStorage.setItem("isSignin",true);
-    //        setLoading(false)
-    //        history.push("/")
-    //    })
+ 
     setLoading(true);
     auth.signInWithEmailAndPassword(email,password).then((authUser)=>{
           localStorage.setItem("isSignin",true);
