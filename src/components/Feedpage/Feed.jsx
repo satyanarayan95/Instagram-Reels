@@ -28,7 +28,7 @@ function Feed() {
     const [userData, setUserData] = useState(null);
     // const [currentUser,setcurrentUser]=useState("");
     // const [CurrentUserUID,setCurrentUserUID]=useState("")
-    // const [CurrentUserObj,setCurrentUserObj]=useState("");
+    const [CurrentUserObj,setCurrentUserObj]=useState("");
     const [profile, setProfile] = useState(false);
     const [edit, setEdit] = useState(false);
     // const { currentUser } = useContext(AuthContext);
@@ -41,39 +41,35 @@ function Feed() {
     // useEffect(() => {
       
     //  }, []);
-   auth.onAuthStateChanged(async (user)=>{
-        if (user){
-           
-            // setcurrentUser(user)
-            // let UID=currentUser.uid;
-            // setCurrentUserUID(UID);
-            // database.collection("users").doc(CurrentUserUID).get().then(doc=>{
-            //     console.log(doc.data());
-            // }) 
-            // console.log(database.collection);
-        //     const querySnapshot = await  getDocs(collection(database, "users"));
-        //     querySnapshot.forEach((doc) => {
-        //       console.log(`${doc.id} => ${doc.data()}`);
-        //   } );
-        database.users.doc(user.uid).get().then((doc)=>{
-            console.log(doc.data());
-            let  CurrentUserObj=doc.data();
-         console.log(CurrentUserObj);
-          
-        //  setCurrentUserObj(CurrentUserObj);
-          
-           
-
-        })
-           
-        }
-        else{
-            console.log("none");
-        }
-    })
-     
+  
+ 
 
     
+// console.log(CurrentUserObj);
+useEffect(()=>{
+    auth.onAuthStateChanged(async (user)=>{
+        console.log("hello");
+         if (user){
+         
+        await database.users.doc(user.uid).get().then((doc)=>{
+             // console.log(doc.data());
+           let  AuthCurrentUserObject =doc.data();
+          console.log(AuthCurrentUserObject);
+      
+          setCurrentUserObj(AuthCurrentUserObject);
+    
+           
+         })
+            
+         }
+         else{
+             console.log("none");
+         }
+     })
+
+
+},[])
+    console.log(CurrentUserObj);
  
      useEffect(async() => {
          await database.users.onSnapshot(async (Snapshot)=>{
@@ -215,16 +211,14 @@ function Feed() {
                                         : <>
                                             <div className='leftFeedPic'>
                                                                         
-                                               {/* {userData.map(user=>(
-                                                 <img
-                                                 key={user.Uid}
+                                            <img
+                                                 key={CurrentUserObj.Uid}
                                                  className="leftFeedimg"
-                                                  src={user.ProfileUrl}
+                                                  src={CurrentUserObj.ProfileUrl}
                                                   alt="profile pic"
                                                  />
-                                               ))} */}
                                             </div>
-                                            <h4 className='leftFeedUserName' onClick={() => { setProfile(true) }}>{userData.Full_Name}</h4>
+                                            <h4 className='leftFeedUserName' onClick={() => { setProfile(true) }}>{CurrentUserObj.Full_Name}</h4>
                                         </>
                                     }
                                     <div className="uploadBtns">
