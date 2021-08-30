@@ -130,7 +130,7 @@ function Post({userData,currentUserObj}) {
                                         <ChatBubbleOutlineIcon className={`${classes.chatBubble} iconStyling`} onClick={() => handleClickOpen(post.PostId)} />
                                     </div>
                                     <div className='postAddComment'>
-                                        <AddComments userData={userData} postData={post} />
+                                        <AddComments userData={userData} postData={post} currentUserObj={currentUserObj} />
                                     </div>
                                     <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId == post.PostId}>
                                         <MuiDialogTitle className={classes.postDialogBox} elevation={0}>
@@ -159,16 +159,16 @@ function Post({userData,currentUserObj}) {
 
                                                     <hr style={{ border: "none", height: "1px", color: "#dfe6e9", backgroundColor: "#dfe6e9" }} />
                                                     <CardContent className={classes.dialogComments}>
-                                                        <Comments userData={userData} postData={post} />
+                                                        <Comments userData={userData} postData={post} currentUserObj={currentUserObj}/>
                                                     </CardContent>
 
                                                     <div className='extra'>
                                                         <div className='likes'>
-                                                            <Like userData={userData} postData={post} />
+                                                            <Like userData={userData} postData={post} currentUserObj={currentUserObj} />
                                                             <Typography className={classes.typo} variant='body2'>{post.Likes.length} Likes</Typography>
                                                         </div>
                                                         <div className='profileCommentBox'>
-                                                            <AddComments userData={userData} postData={post} />
+                                                            <AddComments userData={userData} postData={post} currentUserObj={currentUserObj}  />
                                                         </div>
                                                     </div>
                                                 </div>
