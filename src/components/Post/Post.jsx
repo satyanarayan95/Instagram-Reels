@@ -44,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-function Post({userData}) {
+function Post({userData,currentUserObj}) {
+    // console.log(currentUserObj);
     // console.log(props);
     const [posts, setPost] = useState(null);
     const classes = useStyles();
@@ -125,7 +126,7 @@ function Post({userData}) {
 
                                 <div className='postDetails'>
                                     <div className='postFunc'>
-                                        <Like userData={userData} postData={post} className={`${classes.postLike} iconStyling`} />
+                                        <Like userData={userData} currentUserObj={currentUserObj} postData={post} className={`${classes.postLike} iconStyling`} />
                                         <ChatBubbleOutlineIcon className={`${classes.chatBubble} iconStyling`} onClick={() => handleClickOpen(post.PostId)} />
                                     </div>
                                     <div className='postAddComment'>

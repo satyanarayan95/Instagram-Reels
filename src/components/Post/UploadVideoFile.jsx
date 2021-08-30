@@ -25,9 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function UploadVideoFile(props) {
-    // console.log(props.userData.map((user)=>(
-    //     console.log(user.Uid)
-    // )));
+
     console.log(props);
    
 
@@ -38,27 +36,7 @@ function UploadVideoFile(props) {
     const [error, setError] = useState(null);
     const [CurrentUserObj,setCurrentUserObj]=useState("");
     const type = ['video/mp4', 'video/webm', 'video/ogg']
-     //uid
-//     let UserUid=props.userData.map((user)=>(
-//         user.Uid
-//     ))
-//     let finalUserUid=UserUid[0];
-//     console.log(finalUserUid);
 
-//     //username
-//     let userUsername=props.userData.map((user)=>{
-//       return  user.Full_Name
-//     })
-//     // console.log(userUsername);
-//     let finalUserUserName=userUsername[0];
-//     console.log(finalUserUserName);
-      
-// //profileurl
-//     let UserProfileUrl=props.userData.map((user)=>{
-//         return user.ProfileUrl
-//     })
-//     let FinalUserProfileUrl=UserProfileUrl[0];
-//     // console.log(FinalUserProfileUrl);
 useEffect(()=>{
     auth.onAuthStateChanged(async (user)=>{
         console.log("hello");

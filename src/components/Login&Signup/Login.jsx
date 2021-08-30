@@ -70,11 +70,12 @@ function Login() {
     auth.signInWithEmailAndPassword(email,password).then((authUser)=>{
           localStorage.setItem("isSignin",true);
         //   history.push("/")
-          console.log(authUser);
+        //   console.log(authUser);
+          setLoading(false);
+          history.push("/");
       
     })
-      setLoading(false);
-      history.push("/");
+   
 
 
      }

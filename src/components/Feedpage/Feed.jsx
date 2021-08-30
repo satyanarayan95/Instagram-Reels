@@ -233,7 +233,7 @@ useEffect(()=>{
                                         {profile == true ? <ArrowBackRoundedIcon onClick={() => { setProfile(false) }} className='backArrow' /> : <></>}
                                     </div>
 
-                                    {profile == true ? <Profile userData={userData} /> : <Post userData={userData} />}
+                                    {profile == true ? <Profile userData={userData} /> : <Post userData={userData} currentUserObj={CurrentUserObj} />}
                                 </div>
                             </div>
                         </>
