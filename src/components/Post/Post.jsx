@@ -72,6 +72,7 @@ function Post({userData,currentUserObj}) {
     const callbacks = enteries => {
         enteries.forEach(element => {
             let el = element.target.childNodes[0];
+            console.log(el);
             el.play().then(() => {
                 if (!el.paused && !element.isIntersecting) {
                     el.pause();
@@ -97,6 +98,7 @@ function Post({userData,currentUserObj}) {
     useEffect(() => {
         let videos = document.querySelectorAll(".video .postMedia");
         videos.forEach(el => {
+            console.log(el);
             observer.observe(el);
         })
         return () => {

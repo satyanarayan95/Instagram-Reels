@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import UploadVideoFile from '../Post/UploadVideoFile';
 import Profile from '../Profile/Profile';
 import Post from '../Post/Post';
-import firebase from 'firebase';
+import firebase, { storage } from 'firebase';
 import { collection, getDocs } from "firebase/firestore"; 
 
 
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 function Feed() {
     const classes = useStyles();
     const [userData, setUserData] = useState(null);
-    // const [currentUser,setcurrentUser]=useState("");
+    const [currentUser,setcurrentUser]=useState("");
     // const [CurrentUserUID,setCurrentUserUID]=useState("")
     const [CurrentUserObj,setCurrentUserObj]=useState("");
     const [profile, setProfile] = useState(false);
@@ -48,7 +48,7 @@ function Feed() {
 // console.log(CurrentUserObj);
 useEffect(()=>{
     auth.onAuthStateChanged(async (user)=>{
-        console.log("hello");
+        setcurrentUser(user);
          if (user){
          
         await database.users.doc(user.uid).get().then((doc)=>{
@@ -57,8 +57,7 @@ useEffect(()=>{
           console.log(AuthCurrentUserObject);
       
           setCurrentUserObj(AuthCurrentUserObject);
-    
-           
+  
          })
             
          }
@@ -76,9 +75,7 @@ useEffect(()=>{
              setUserData(Snapshot.docs.map((doc)=>doc.data()));
              
            
-         })
-
-        // console.log(userData);
+         }) 
          
     }, [])
 
@@ -86,13 +83,6 @@ useEffect(()=>{
     const handleMenu = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
-    function handleDeleteAcnt(){
-
-
-    }
-
-    
   
     const handleCloseBox = () => {
         setAnchorEl(null);
@@ -103,11 +93,7 @@ useEffect(()=>{
         history.push("/login");
         return await auth.signOut();
       }
-  
-//     console.log(userData); 
-//  console.log(CurrentUserUID)
-
- 
+   
     return (
         <>
         <div className='feedBody'>
