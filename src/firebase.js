@@ -4,22 +4,16 @@ import firebase from "firebase"
 // // import "firebase/storage";
 import 'firebase/firestore';
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCVx63b1IwfAD1LCVLOZDCeF4_jA9MctrA",
-  authDomain: "reel-2.firebaseapp.com",
-  databaseURL: "https://reel-2-default-rtdb.firebaseio.com",
-  projectId: "reel-2",
-  storageBucket: "reel-2.appspot.com",
-  messagingSenderId: "768189475559",
-  appId: "1:768189475559:web:65e4ba2b4456f843fb9042",
-  measurementId: "G-FK221DBDKP"
+const firebaseConfig = {
+  apiKey: "AIzaSyDPzP1cDHy_Ir_KUeyRpsF9Vtj33n8p4OM",
+  authDomain: "authentication-4d4c4.firebaseapp.com",
+  projectId: "authentication-4d4c4",
+  storageBucket: "authentication-4d4c4.appspot.com",
+  messagingSenderId: "1075759606787",
+  appId: "1:1075759606787:web:b8311192db29a03cf23236"
 };
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-// if (!firebase.apps.length) {
-//   firebase.initializeApp({});
-// }else {
-//   firebase.app(); // if already initialized, use that one\\\
-// }
+firebase.initializeApp(firebaseConfig);
+
  const auth = firebase.auth();
  const firestore=firebase.firestore();
  export const database={

@@ -1,187 +1,88 @@
-import {
-  Button,
-  FilledInput,
-  InputAdornment,
-  InputLabel,
-  makeStyles,
-
-  Typography,
-} from "@material-ui/core";
-import { IconButton } from "@material-ui/core";
-import { FormControl, TextField } from "@material-ui/core";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
-import React, { useEffect, useState } from "react";
-
-import wordLogo from "../images/word_logo.png";
-
-import "../Styles/Signup.css";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import auth from "../../firebase";
-// import { auth } from "firebase";
+import { useHistory } from "react-router-dom";
 
-console.log(auth)
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [loader, setLoader] = useState(false);
 
-const useStyles = makeStyles((theme) => ({
-    input: {
-        display: 'none',
-    },
-    textField: {
-        borderColor: 'grey'
-    },
-    resize: {
-        fontFamily: 'Quicksand, sans-serif',
-        fontWeight: "700",
-        color: "#4e4a4a"
-    },
-    uploadBtn: {
-        width: 290,
-        borderRadius: '32px',
-        color: '#6e666e',
-    },
-    btn: {
-        background: "#EC4899",
-        width: '100%',
-        height: 50,
-        borderRadius: '32px',
-        boxShadow: '0px 10px 14px -7px #ab75d9',
-        // backgroundColor: '#a06ded',
-        // color: '#ffffff'
-    }
-}));
-
-function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-  const history=useHistory();
-    const [values, setValues] = React.useState({
-        showPassword: false
-    });
-
-    const classes = useStyles();
-
- const handleLogin= (e)=>{
+  const history = useHistory();
+  const handleLogin = async (e) => {
+    // alert(email + password);
     e.preventDefault();
- 
-     try{
- 
-    setLoading(true);
-    auth.signInWithEmailAndPassword(email,password).then((authUser)=>{
-          localStorage.setItem("isSignin",true);
-        //   history.push("/")
-        //   console.log(authUser);
-          setLoading(false);
-          history.push("/");
-      
-    })
-   
+    try {
+      // async
+      setLoader(true);
+      auth.signInWithEmailAndPassword(email, password).then((authUser) => {
+        localStorage.setItem("isSignin", true);
+        history.push("/");
+        console.log(authUser);
+      });
+      history.push("/");
+    } catch (err) {
+      setError(true);
+      setEmail("");
+      setPassword("");
+    }
+    setLoader(false);
+  };
 
+  return (
+    <div className="flex mx-auto max-w-screen-md items-center max-h-screen  mt-10 bg-lightgrey-100 rounded shadow-lg text-black w-full">
+      <div className="flex w-3/5">
+        <img
+          src="https://github.com/karlhadwen/instagram/blob/master/public/images/iphone-with-profile.jpg?raw=true"
+          alt="iPhone with Instagram app"
+        />
+      </div>
+      <div className="flex flex-col w-2/5">
+        <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
+          <h1 className="flex justify-center w-full">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
+              alt="Instagram"
+              className="mt-2 w-6/12 mb-4"
+            />
+          </h1>
 
-     }
-     catch(e){
-        //  setError(e.message);
-        //  setTimeout(()=>setError(""),2000)
-        //  setLoading(false)
-        setError(true);
-        setLoading(false);
-        setEmail("");
-        setPassword("")
-
-     }
-
- }
-
-
- const handleClickShowPassword= ()=>{
-      setValues({...values,showPassword:!values.showPassword});
-
- }
-    return (
-        <div className='body'>
-            <div className="glass">
-                <div className='main_card'>
-                    <div className='card_1'>
-                        {/* <img src={mainImage} alt='' className='logImage'></img> */}
-                    </div>
-
-                    <div className='card_2'>
-                        <div className='reelify_logo'>
-                            <img src={wordLogo} alt='Logo'></img>
-                            <div className="signupLogo">
-                                {/* <img src={logo} alt='Logo' ></img> */}
-                            </div>
-
-                        </div>
-                       
-                        <form  onSubmit={handleLogin} className='user_data'>
-                            {/* <h4 className='subHeaderLogin'>Login</h4> */}
-                            <Typography variant="h3" color="Primary"  >Login</Typography>
-                            <div className='inputfield'>
-                                <TextField
-                                    id="filled-basic"
-                                    label="Email"
-                                    variant="filled"
-                                    fullWidth
-                                    color='primary'
-                                    InputProps={{
-                                        classes: {
-                                            input: classes.resize,
-                                        },
-                                    }}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                            </div>
-
-                            <div className='inputfield'>
-                                <FormControl variant="filled" fullWidth color='primary'>
-                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                    <FilledInput
-                                        id="outlined-adornment-password"
-                                        type={values.showPassword ? 'text' : 'password'}
-                                        value={values.password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        endAdornment={
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleClickShowPassword}
-                                                    // onMouseDown={handleMouseDownPassword}
-                                                    edge="end"
-                                                >
-                                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        }
-                                        labelWidth={70}
-                                    />
-                                </FormControl>
-                            </div>
-
-                            <div className='buttons'>
-                                <Button
-                                    className={classes.btn}
-                                    variant="contained"
-                                    color="primary"
-                                    disabled={loading}
-                                    type='submit'
-                                   >
-                                    Login
-                                </Button>
-                            </div>
-                            {error ? <h4 className='loginError'>{error}</h4> : <></>}
-                            <div className='card_3' >
-                                <Link to="/signup" >
-                                <h5  className='routing' >New User ? SignUp</h5>
-                                </Link>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div >
-    )
+          <form onSubmit={handleLogin} method="POST">
+            <input
+              aria-label="Enter your email address"
+              type="text"
+              placeholder="Email address"
+              className="focus:outline-none shadow-inner text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+            <input
+              aria-label="Enter your password"
+              type="password"
+              placeholder="Password"
+              className="  focus:outline-none shadow-inner text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+        
+            <button
+              type="submit"
+              className=" bg-pink-500 text-white w-full rounded h-8 font-bold"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+        <div className="flex justify-center items-center flex-col w-full bg-white p-4 rounded border border-gray-primary">
+          <p className="text-sm">
+            Don't have an account?{` `}
+            <Link to="/signup" className="font-bold text-blue-600 underline">
+              Sign up
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
-
-export default Login

@@ -1,14 +1,6 @@
-.postContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 16px;
-    
-}
+
 .post{
-    width: 550px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,31 +19,8 @@
     
 }
 .postMedia{
-    max-height: 550px;
+    max-height: 500px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.postDetails{
-    height: 130px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 16px;
-}
-
-.postFunc{
-    height: 40%;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-}
-.postAddComment{
-    height: 60%;
-    width: 100%;
-    border-top: 1px solid rgba(168, 164, 164, 0.637);
-    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,15 +30,7 @@
     margin:10px;
 }
 
-.uname{
-    height: 100%;
-    margin: 0 10px;
-    font-size: 1.3rem;
-    border-radius: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 /* ***************************DAILOG BOX********************************* */
 .dialogContainer{

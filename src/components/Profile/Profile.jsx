@@ -1,10 +1,11 @@
 import React from 'react'
-
+import NavBar from "../Navbar"
 function Profile() {
     return (
-        <div>
-            
-        </div>
+        <>
+        <NavBar/>  
+        <h1>hello</h1>
+        </>
     )
 }
 

@@ -1,7 +1,6 @@
 import { Avatar, CardContent, CardHeader, Dialog, makeStyles, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import "../Styles/Post.css"
-import Image from './Image';
 import Video from './Video';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import Like from './Like';
@@ -50,17 +49,7 @@ function Post({userData,currentUserObj}) {
     const [posts, setPost] = useState(null);
     const classes = useStyles();
     const [openId, setOpenId] = useState(null);
-
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleCloseA = () => {
-        setAnchorEl(null);
-    };
+    
 
     const handleClickOpen = (id) => {
         setOpenId(id);
@@ -81,7 +70,7 @@ function Post({userData,currentUserObj}) {
         })
     }
 
-    const observer = new IntersectionObserver(callbacks, { threshold: 0.95 }); 
+    const observer = new IntersectionObserver(callbacks, { threshold: 0.8 }); 
     useEffect(() => {
         let postArr = [];
         let unsbs = database.posts.orderBy('CreatedAt', 'desc').onSnapshot(allPostSnap => {
@@ -113,25 +102,25 @@ function Post({userData,currentUserObj}) {
                 <div className='feedLoading'>
                     <img src={LoadingIcon} />
                 </div> :
-                < div className='postContainer' >
+                < div className=' w-full flex flex-col justify-center items-center rounded-2xl' >
                     {posts.map((post, index) => (
                         <React.Fragment key={index}>
                             <div className={`post ${post.Type}`}>
-                                <div className='postHeader'>
+                                <div className=' h-14 w-full flex mb-2 border-b-2 border-gray-100 pl-3'>
                                     <Avatar className={classes.large} alt="profile image" src={post.UserProfile} ></Avatar>
-                                    <h4 className='uname'>{post.UserName} </h4>
+                                    <h3 className='h-full mx-2 mb-3 font-bold text-gray-500 flex items-center justify-center'>{post.UserName} </h3>
                                 </div>
 
                                 <div className='postMedia' >
-                                    {post.Type == 'image' ? <Image source={post.PostUrl} /> : <Video source={post.PostUrl} />}
+                                     <Video source={post.PostUrl} />
                                 </div>
 
-                                <div className='postDetails'>
-                                    <div className='postFunc'>
+                                <div className=' h-28 w-full flex flex-col rounded-xl p-2'>
+                                    <div className=' h-1/3 flex items-center p-0'>
                                         <Like userData={userData} currentUserObj={currentUserObj} postData={post} className={`${classes.postLike} iconStyling`} />
                                         <ChatBubbleOutlineIcon className={`${classes.chatBubble} iconStyling`} onClick={() => handleClickOpen(post.PostId)} />
                                     </div>
-                                    <div className='postAddComment'>
+                                    <div className=' h-1/4 w-full border-t-2 border-gray-100 flex items-center justify-center mt-3'>
                                         <AddComments userData={userData} postData={post} currentUserObj={currentUserObj} />
                                     </div>
                                     <Dialog maxWidth="md" onClose={handleClose} aria-labelledby="customized-dialog-title" open={openId == post.PostId}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import { database } from '../../firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import "../Styles/Like.css"
@@ -33,7 +33,6 @@ function Like({ userData , postData , currentUserObj }) {
     // console.log(currentUserObj);
     const classes = useStyles();
     const [isLiked, setLiked] = useState(false);
-    const [CurrentUserObj,setCurrentUserObj]=useState("");
 
   
    const handleLike =async (postid)=>{

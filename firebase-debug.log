@@ -1,0 +1,145 @@
+[debug] [2021-09-10T18:15:21.602Z] ----------------------------------------------------------------------
+[debug] [2021-09-10T18:15:21.605Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-09-10T18:15:21.605Z] CLI Version:   9.18.0
+[debug] [2021-09-10T18:15:21.605Z] Platform:      win32
+[debug] [2021-09-10T18:15:21.605Z] Node Version:  v12.18.3
+[debug] [2021-09-10T18:15:21.606Z] Time:          Fri Sep 10 2021 23:45:21 GMT+0530 (India Standard Time)
+[debug] [2021-09-10T18:15:21.607Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-09-10T18:15:21.683Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-09-10T18:15:21.684Z] > authorizing via signed-in user (satyanarayan.patra5495@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\New folder\demo\instagram
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using reel-2. 
+[debug] [2021-09-10T18:15:29.006Z] > refreshing access token with scopes: []
+[debug] [2021-09-10T18:15:29.007Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-09-10T18:15:29.416Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Fri, 10 Sep 2021 18:15:29 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-09-10T18:15:29.433Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 [none]
+[debug] [2021-09-10T18:15:30.000Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 403
+[debug] [2021-09-10T18:15:30.000Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-09-10T18:15:30.001Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-09-10T18:15:30.279Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Client.doRequest (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:238:23)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Client.request (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:96:20)
+    at async Object.getFirebaseProject (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:290:21)
+    at async Object.doSetup [as project] (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\project.js:77:27)
+    at async init (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:19:9)
+[error] 
+[error] Error: Failed to get Firebase project reel-2. Please make sure the project exists and your account has permission to access it.
+[debug] [2021-09-10T18:15:44.310Z] ----------------------------------------------------------------------
+[debug] [2021-09-10T18:15:44.312Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-09-10T18:15:44.313Z] CLI Version:   9.18.0
+[debug] [2021-09-10T18:15:44.313Z] Platform:      win32
+[debug] [2021-09-10T18:15:44.313Z] Node Version:  v12.18.3
+[debug] [2021-09-10T18:15:44.314Z] Time:          Fri Sep 10 2021 23:45:44 GMT+0530 (India Standard Time)
+[debug] [2021-09-10T18:15:44.314Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-09-10T18:15:44.375Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-09-10T18:15:44.375Z] > authorizing via signed-in user (satyanarayan.patra5495@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\New folder\demo\instagram
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using reel-2. 
+[debug] [2021-09-10T18:16:12.273Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 [none]
+[debug] [2021-09-10T18:16:12.907Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 403
+[debug] [2021-09-10T18:16:12.908Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-09-10T18:16:12.908Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-09-10T18:16:13.186Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Client.doRequest (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:238:23)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Client.request (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:96:20)
+    at async Object.getFirebaseProject (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:290:21)
+    at async Object.doSetup [as project] (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\project.js:77:27)
+    at async init (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:19:9)
+[error] 
+[error] Error: Failed to get Firebase project reel-2. Please make sure the project exists and your account has permission to access it.
+[debug] [2021-09-10T18:16:44.546Z] ----------------------------------------------------------------------
+[debug] [2021-09-10T18:16:44.549Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-09-10T18:16:44.549Z] CLI Version:   9.18.0
+[debug] [2021-09-10T18:16:44.550Z] Platform:      win32
+[debug] [2021-09-10T18:16:44.550Z] Node Version:  v12.18.3
+[debug] [2021-09-10T18:16:44.551Z] Time:          Fri Sep 10 2021 23:46:44 GMT+0530 (India Standard Time)
+[debug] [2021-09-10T18:16:44.551Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-09-10T18:16:44.613Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-09-10T18:16:44.613Z] > authorizing via signed-in user (satyanarayan.patra5495@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\New folder\demo\instagram
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using reel-2. 
+[debug] [2021-09-10T18:18:26.900Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 [none]
+[debug] [2021-09-10T18:18:27.507Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 403
+[debug] [2021-09-10T18:18:27.507Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/reel-2 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-09-10T18:18:27.508Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-09-10T18:18:27.825Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Client.doRequest (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:238:23)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Client.request (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:96:20)
+    at async Object.getFirebaseProject (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:290:21)
+    at async Object.doSetup [as project] (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\project.js:77:27)
+    at async init (C:\Users\kille\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:19:9)
+[error] 
+[error] Error: Failed to get Firebase project reel-2. Please make sure the project exists and your account has permission to access it.
