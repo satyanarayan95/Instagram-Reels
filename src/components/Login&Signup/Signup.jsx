@@ -77,7 +77,7 @@ export default function Signup() {
             <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div class="bg-white px-6 py-8 rounded shadow-lg text-black w-full">
                 <form onSubmit={handleSignup}>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-centerg">
           <img 
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" 
           className="object-contain h-12 w-48"
